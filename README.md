@@ -1,28 +1,31 @@
 # netsnmp-galileo
-A tar of net-snmp compiled for the Intel Galileo Gen 2
+An archive of net-snmp compiled for the Intel Galileo Gen 2
 
-I wanted to use net-snmp on the Galileo Gen 2, unfortunately I could not find the package.
+I wanted to use net-snmp on the Galileo Gen 2, unfortunately I could not find an available  package.
 
-Why SNMP? Because much of the SCADA and IIoT infrastructure is monitored using tools like Nagios and SolarWinds etc.
+Why SNMP? Because much of the SCADA and IIoT infrastructure is monitored using legacy tools like Nagios and SolarWinds etc.
 
-You can download it here,  to use it run:
+You can download it from this repo, to use it untar and make install:
 
     tar -zxvf net-snmp-compiled.tar.gz 
     cd net-snmp-compiled 
     make install
 
-But if you need to compile it on your own, below are the stpes I took.`
+If for some reason you need to compile it on your own, below are the steps I took to compile.
 
-This is a quick write up on installing Net-SNMP and creating custom MIB on the Galileo. I am using the eglibc image here: http://downloadmirror.intel.com/25384/eng/iot-devkit-201510010757-mmcblkp0-galileo.direct.xz
+This is a short write up on installing Net-SNMP and creating custom MIBs on the Galileo. I am using the eglibc image here: http://downloadmirror.intel.com/25384/eng/iot-devkit-201510010757-mmcblkp0-galileo.direct.xz
  
     wget http://downloads.sourceforge.net/project/net-snmp/net-snmp/5.7.3/net-snmp-5.7.3.tar.gz  
 
-We untar to /tmp to avoid long filename issues  
+We untar to /tmp to avoid long filename issues with the IoT image. 
 
     tar -zxvf net-snmp-5.7.3.tar.gz -C /tmp  
     cd /tmp  
   
-    ./configure --disable-ipv6  --disable-embedded-perl --without-perl-modules --disable-snmptrapd-subagent   
+    ./configure --disable-ipv6  \
+        --disable-embedded-perl \
+        --without-perl-modules \
+        --disable-snmptrapd-subagent   
 
 Compiling takes a very long time, to avoid having to start over use nohup.
   
@@ -31,7 +34,7 @@ Compiling takes a very long time, to avoid having to start over use nohup.
     make install  
   
   
-Once done, you need to configure it, the command snmpconf does most of this for you. 
+Once done, you need to configure SNMP, the command snmpconf does most of this for you. 
 
     snmpconf  
     Select snmpd.conf  
