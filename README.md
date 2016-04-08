@@ -24,7 +24,7 @@ We untar to /tmp to avoid long filename issues
   
     ./configure --disable-ipv6  --disable-embedded-perl --without-perl-modules --disable-snmptrapd-subagent   
 
-Compiling tkaes a very long time, to avoid having to start over use nohup.
+Compiling takes a very long time, to avoid having to start over use nohup.
   
     nohup make &   
     tail -f nohup.out   
