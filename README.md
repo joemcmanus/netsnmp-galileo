@@ -5,7 +5,13 @@ I wanted to use net-snmp on the Galileo Gen 2, unfortunately I could not find th
 
 Why SNMP? Because much of the SCADA and IIoT infrastructure is monitored using tools like Nagios and SolarWinds etc.
 
-You can download it here, but if you need to compile it...
+You can download it here,  to use it run:
+
+    tar -zxvf net-snmp-compiled.tar.gz 
+    cd net-snmp-compiled 
+    make install
+
+but if you need to compile it...
 
 This is a quick write up on installing Net-SNMP and creating custom mibs on the Galileo. I am using the eglibc image here: http://downloadmirror.intel.com/25384/eng/iot-devkit-201510010757-mmcblkp0-galileo.direct.xz
  
@@ -48,6 +54,7 @@ quit
   
   
 #Start snmp  
+
   
 #Move the config file to etc  
 mv snmpd.conf /etc/.  
