@@ -19,7 +19,7 @@ This is a quick write up on installing Net-SNMP and creating custom MIB on the G
 
 We untar to /tmp to avoid long filename issues  
 
-    tar -xvf net-snmp-5.7.3.tar.gz -C /tmp  
+    tar -zxvf net-snmp-5.7.3.tar.gz -C /tmp  
     cd /tmp  
   
     ./configure --disable-ipv6  --disable-embedded-perl --without-perl-modules --disable-snmptrapd-subagent   
